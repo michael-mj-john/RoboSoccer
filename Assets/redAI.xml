@@ -1,0 +1,9 @@
+<root>
+  <selector>
+    <sequence>
+      <actionProperty componentName="RedAI" action="isNearBall" />
+      <actionVoid componentName="RedAI" action="jumpUp" />
+      <actionVoid componentName="RedAI" action="moveToMyGoal" />
+    </sequence>
+  </selector>
+</root>
