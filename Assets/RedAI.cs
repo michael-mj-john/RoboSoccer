@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedAI : MonoBehaviour
+public class RedAI : PlayerBase
 {
 
     public new GameObject ball;
