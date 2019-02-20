@@ -5,5 +5,15 @@
       <actionVoid componentName="RedAI" action="jumpUp" />
       <actionVoid componentName="RedAI" action="moveToMyGoal" />
     </sequence>
+    <sequence>
+      <actionProperty componentName="RedAI" action="ballNearMyGoal" />
+      <actionVoid componentName="RedAI" action="moveToMyGoal" />
+    </sequence>
+    <sequence>
+      <untilTrue>
+        <actionProperty componentName="RedAI" action="hitsPlayer" />
+      </untilTrue>
+      <actionVoid componentName="RedAI" action="moveToOpponent" />
+    </sequence>
   </selector>
 </root>

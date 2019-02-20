@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    private float boostTimer;
+    private float boostCoolDown = 3.0f;
+    protected float boostFactor = 3.0f;
+
+    [SerializeField] protected float physicsForce = 1000.0f;
+
+    void Start() {
+        boostTimer = Time.time;
+
+    }
+
+    protected bool boostAllowed {
+        get {
+            if( boostTimer + boostCoolDown > Time.time ) {
+                boostTimer = Time.time;
+                return true;
+            }
+            return false;
+        }
+    }
+
+    void Update(){
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+
 }
