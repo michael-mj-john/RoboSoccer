@@ -8,10 +8,17 @@ public class PlayerBase : MonoBehaviour
     private float boostCoolDown = 3.0f;
     protected float boostFactor = 3.0f;
 
+    [SerializeField] protected GameObject opponent;
+    [SerializeField] protected GameObject ball;
+
     [SerializeField] protected float physicsForce = 1000.0f;
 
-    void Start() {
+    protected virtual void Start() {
         boostTimer = Time.time;
+
+    }
+
+    protected virtual void Update() {
 
     }
 
@@ -25,9 +32,6 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
-    void Update(){
-        
-    }
 
     
 
