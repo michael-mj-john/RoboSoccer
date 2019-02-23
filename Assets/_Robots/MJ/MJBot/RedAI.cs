@@ -29,7 +29,7 @@ public class RedAI : PlayerBase
     private void FixedUpdate() {
         if (targetPoint != null) {
             targetSphere.transform.position = targetPoint;
-            myUtilities.moveToTarget(targetPoint, rb, this.transform);
+            myUtilities.moveToTarget(targetPoint, rb, this.transform, targetSphere );
         }
     }
 
@@ -49,18 +49,18 @@ public class RedAI : PlayerBase
     }
 
     public void jumpUp() {
-        rb.AddForce(Vector3.up * physicsForce * 10);
+   //     rb.AddForce(Vector3.up * physicsForce * 10);
     }
 
     public void boost () {
         if( boostAllowed ) {
-            rb.AddForce(transform.forward * physicsForce * boostFactor);
+    //        rb.AddForce(transform.forward * physicsForce * boostFactor);
         }
     }
 
     public void interceptBall () {
         Vector3 targetVec = myUtilities.findInterceptPoint(ball.transform, opponentGoal.transform, this.transform);
-        myUtilities.moveToTarget(targetVec, rb, this.transform);
+        myUtilities.moveToTarget(targetVec, rb, this.transform, targetSphere);
     }
 
 
@@ -98,18 +98,28 @@ public class RedAI : PlayerBase
 /* Static methods for keeping AI class a little cleaner */
 public static class myUtilities  {
 
-    public static void moveToTarget( Vector3 targetPoint, Rigidbody rb, Transform currentTransform ) {
+    public static void moveToTarget( Vector3 targetPoint, Rigidbody rb, Transform currentTransform, GameObject targetIndicator ) {
+        // put targetSphere at target point
+        targetIndicator.transform.position = targetPoint;
+
         // find vector from player to target point
         Vector3 lookVector = targetPoint - currentTransform.position;
 
-        // quickly rotate to face the target
-        currentTransform.rotation = Quaternion.LookRotation(lookVector);
-        rb.AddForce(currentTransform.forward * 0.0001f);
+                rb.AddForce(currentTransform.forward * 0.0001f);
 
         // stop if you reach the target point
         if (lookVector.magnitude < 1.0f) {
             rb.velocity = Vector3.zero;
         }
+    }
+
+    public static void aimAtTarget( Vector3 targetPoint, Rigidbody rb, Transform currentTransform ) {
+        // find vector from player to target point
+        Vector3 lookVector = targetPoint - currentTransform.position;
+
+        // quickly rotate to face the target
+   //     currentTransform.rotation = Quaternion.LookRotation(lookVector);
+
     }
 
     public static Vector3 findInterceptPoint( Transform target, Transform targetDest, Transform currentPos ) {

@@ -3,10 +3,12 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class MovetoIntercept : Action
 {
-    public RedAI thisPlayer;
+    public bd_ai thisPlayer;
+    private Rigidbody rb;
 
     public override void OnAwake() {
-        thisPlayer = gameObject.GetComponent<RedAI>();
+        thisPlayer = gameObject.GetComponent<bd_ai>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     public override TaskStatus OnUpdate() {
@@ -14,10 +16,28 @@ public class MovetoIntercept : Action
         if ( Vector3.Magnitude(thisPlayer.transform.position - target) < 0.1 ) {
             return TaskStatus.Success;
         }
-        myUtilities.moveToTarget(target, thisPlayer.rb, thisPlayer.transform);
-        return TaskStatus.Running;
-
+        Quaternion rotation = Quaternion.LookRotation(target - thisPlayer.transform.position, Vector3.up);
+        thisPlayer.transform.rotation = rotation;
+   //         myUtilities.aimAtTarget(target, rb, transform);
+        myUtilities.moveToTarget(target, rb, transform, thisPlayer.targetSphere);
+        return TaskStatus.Success;
 
     }
 
+}
+
+public class Jump : Action {
+
+    public Rigidbody rb;
+
+    public override void OnAwake() {
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
+
+    public override TaskStatus OnUpdate() {
+ //       rb.AddForce(Vector3.up * 300);
+
+        return TaskStatus.Success;
+
+    }
 }
