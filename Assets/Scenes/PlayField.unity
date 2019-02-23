@@ -336,26 +336,8 @@ MonoBehaviour:
   ball: {fileID: 800788209}
   myGoal: {fileID: 1175326702}
   opponentGoal: {fileID: 1710549120}
-  physicsForce: 10
+  physicsForce: 1
   targetSphere: {fileID: 726505756}
---- !u!143 &43378484
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43378475}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5000001
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &94825160
 Mesh:
   m_ObjectHideFlags: 0
@@ -48561,7 +48543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4477902573305080, guid: 05a54b5a09a79ee4aaea280ebe1d25c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 14.14
       objectReference: {fileID: 0}
     - target: {fileID: 4477902573305080, guid: 05a54b5a09a79ee4aaea280ebe1d25c9, type: 3}
       propertyPath: m_LocalPosition.y
