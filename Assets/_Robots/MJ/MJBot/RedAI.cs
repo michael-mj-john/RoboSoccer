@@ -11,7 +11,7 @@ public class RedAI : PlayerBase
     public  GameObject opponentGoal;
 
     private float rotateSpeed = 100;
-    private Rigidbody rb;
+    public Rigidbody rb;
     protected bool hitPlayer = false;
     protected Vector3 vecToBall, vecToOpponent;
 
