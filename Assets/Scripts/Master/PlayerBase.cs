@@ -15,7 +15,7 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] public GameObject myGoal;
     [SerializeField] public GameObject opponentGoal;
 
-    [SerializeField] protected float physicsForce = 1000.0f;
+    [SerializeField] public float physicsForce = 1000.0f;
 
     protected virtual void Awake() {
         collider = GetComponent<Collider>();
@@ -41,7 +41,7 @@ public class PlayerBase : MonoBehaviour
     }
 
     public bool isGrounded() {
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 2.6f);
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + .3f);
     }
 
 
