@@ -29,7 +29,19 @@ public class BehindBall: Conditional {
     public override TaskStatus OnUpdate() {
         return transform.position.x < thisPlayer.ball.transform.position.x ? TaskStatus.Success : TaskStatus.Failure;
     }
+}
 
+public class BoostAllowed: Conditional {
+
+    public PlayerBase thisPlayer;
+
+    public override void OnAwake() {
+        thisPlayer = gameObject.GetComponent<bd_ai>();
+    }
+
+    public override TaskStatus OnUpdate() {
+        return thisPlayer.boostAllowed ? TaskStatus.Success : TaskStatus.Failure;
+    }
 
 }
 

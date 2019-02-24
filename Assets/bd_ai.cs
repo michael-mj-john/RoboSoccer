@@ -6,7 +6,4 @@ public class bd_ai : PlayerBase
 {
     public GameObject targetSphere;
 
-
-
-
 }

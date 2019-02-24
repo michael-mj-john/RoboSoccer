@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
+
 public class MovetoIntercept : Action
 {
     public bd_ai thisPlayer;
@@ -41,6 +42,26 @@ public class RunToBall: Action {
         return TaskStatus.Success;
 
     }
+}
+
+public class BoostToBall : Action {
+    public bd_ai thisPlayer;
+    private Rigidbody rb;
+
+    public override void OnAwake() {
+        thisPlayer = gameObject.GetComponent<bd_ai>();
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
+
+    public override TaskStatus OnUpdate() {
+        Vector3 target = thisPlayer.ball.transform.position;
+        if (Vector3.Magnitude(thisPlayer.transform.position - target) < 0.1) {
+            return TaskStatus.Failure;
+        }
+        mj_Utilities.moveToTarget(target, rb, transform, thisPlayer.targetSphere, thisPlayer.physicsForce * thisPlayer.boostFactor );
+        return TaskStatus.Success;
+    }
+
 }
 
 public class RunBehindBall : Action {
