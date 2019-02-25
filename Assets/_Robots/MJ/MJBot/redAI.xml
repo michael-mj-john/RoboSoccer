@@ -1,9 +1,0 @@
-<root>
-  <selector>
-    <sequence>
-      <untilTrue>
-        <actionVoid componentName="RedAI" action="interceptBall" />
-      </untilTrue>
-    </sequence>
-  </selector>
-</root>

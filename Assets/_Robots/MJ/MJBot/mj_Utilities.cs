@@ -12,8 +12,9 @@ public static class mj_Utilities {
 
         // find vector from player to target point
         Vector3 lookVector = targetPoint - currentTransform.position;
+        Vector2 flatVector = new Vector2(lookVector.x, lookVector.z);
 
-        currentTransform.rotation = Quaternion.LookRotation(targetPoint - currentTransform.position, Vector3.up);
+        currentTransform.rotation = Quaternion.LookRotation(flatVector, Vector3.up);
         currentTransform.rotation = Quaternion.Euler(0, currentTransform.eulerAngles.y, 0);
 
         rb.AddForce(currentTransform.forward * force);
@@ -29,9 +30,14 @@ public static class mj_Utilities {
         return (targetDest.position + target.position) * 0.5f;
     }
 
-    //public static Vector3 findReversePoint(Transform target, Transform targetDest ) {
+    public static Vector3 findAimedPoint (Vector3 ballPosition, Vector3 goalPosition )
+    {
+        Vector3 ballToGoal = ballPosition - goalPosition;
+        ballToGoal.Normalize();
+        Vector3 target = ballPosition + ballToGoal * 3.5f;
+        return target;
+    }
 
-    //}
 
 }
 

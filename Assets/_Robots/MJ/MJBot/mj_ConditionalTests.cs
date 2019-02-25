@@ -59,16 +59,32 @@ public class OnTheGround : Conditional {
     
 }
 
-public class CloseToBall : Conditional {
+public class CloseToBall : Conditional
+{
     public bd_ai thisPlayer;
 
-    public override void OnAwake() {
+    public override void OnAwake()
+    {
         thisPlayer = gameObject.GetComponent<bd_ai>();
     }
 
-    public override TaskStatus OnUpdate() {
-        return Vector3.Magnitude(thisPlayer.transform.position - thisPlayer.ball.transform.position) < 2.0f ? TaskStatus.Success : TaskStatus.Failure;
+    public override TaskStatus OnUpdate()
+    {
+        return Vector3.Magnitude(thisPlayer.transform.position - thisPlayer.ball.transform.position) < 4.0f ? TaskStatus.Success : TaskStatus.Failure;
     }
+
+}
+
+public class mj_AlignedToBall : Conditional
+{
+    public bd_ai thisPlayer;
+
+    public override void OnAwake()
+    {
+        thisPlayer = gameObject.GetComponent<bd_ai>();
+    }
+
+ // incomplete. ignore
 
 }
 

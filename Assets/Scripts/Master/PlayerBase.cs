@@ -33,13 +33,20 @@ public class PlayerBase : MonoBehaviour
         
     }
 
-    protected virtual void Update() {
-        if( rb.velocity.magnitude > maxSpeed ) {
-            rb.velocity = rb.velocity.normalized * maxSpeed; 
-        }
-        if(Input.GetKeyDown(KeyCode.R) ) {
+    protected virtual void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
             this.transform.position = startPosition;
         }
+    }
+
+    protected virtual void FixedUpdate() {
+        // speed clamp code
+        if ( rb.velocity.magnitude > maxSpeed ) {
+            rb.velocity = rb.velocity.normalized * maxSpeed; 
+        }
+
     }
 
     public bool boostAllowed {

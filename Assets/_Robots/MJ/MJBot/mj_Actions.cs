@@ -77,7 +77,7 @@ public class RunBehindBall : Action {
         // find the desired point
         Vector3 ballToGoal = thisPlayer.ball.transform.position - thisPlayer.opponentGoal.transform.position;
         ballToGoal.Normalize();
-        Vector3 target = thisPlayer.ball.transform.position + ballToGoal * 1.5f ;
+        Vector3 target = thisPlayer.ball.transform.position + ballToGoal * 3.5f; ;
         if (Vector3.Magnitude(thisPlayer.transform.position - target) < 0.1) {
             return TaskStatus.Failure;
         }
