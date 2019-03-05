@@ -26,6 +26,7 @@ public class MovetoIntercept : Action
 public class RunToBall: Action {
     public bd_ai thisPlayer;
     private Rigidbody rb;
+    [SerializeField] private GameObject ball;
 
     public override void OnAwake() {
         thisPlayer = gameObject.GetComponent<bd_ai>();
