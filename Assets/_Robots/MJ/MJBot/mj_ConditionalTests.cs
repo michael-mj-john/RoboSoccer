@@ -58,7 +58,7 @@ public class OnTheGround : Conditional {
     }
     
 }
-
+ 
 public class CloseToBall : Conditional
 {
     public bd_ai thisPlayer;
