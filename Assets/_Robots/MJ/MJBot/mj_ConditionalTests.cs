@@ -40,7 +40,7 @@ public class BoostAllowed: Conditional {
     }
 
     public override TaskStatus OnUpdate() {
-        return thisPlayer.boostAllowed ? TaskStatus.Success : TaskStatus.Failure;
+        return thisPlayer.tryBoost ? TaskStatus.Success : TaskStatus.Failure;
     }
 
 }
@@ -58,7 +58,7 @@ public class OnTheGround : Conditional {
     }
     
 }
-
+ 
 public class CloseToBall : Conditional
 {
     public bd_ai thisPlayer;
